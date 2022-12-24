@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/animeklb/static/css/main.975d0deb.css",
+    "main.js": "/animeklb/static/js/main.e0ae9e44.js",
+    "static/js/787.605df244.chunk.js": "/animeklb/static/js/787.605df244.chunk.js",
+    "index.html": "/animeklb/index.html",
+    "main.975d0deb.css.map": "/animeklb/static/css/main.975d0deb.css.map",
+    "main.e0ae9e44.js.map": "/animeklb/static/js/main.e0ae9e44.js.map",
+    "787.605df244.chunk.js.map": "/animeklb/static/js/787.605df244.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.975d0deb.css",
+    "static/js/main.e0ae9e44.js"
+  ]
+}

@@ -1,0 +1,36 @@
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+button {
+    padding: 10px;
+    /* background-color: rgb(243, 233, 205); */
+    background-color: lightseagreen;
+    border-radius: 10px;
+    font-weight: bold;
+    border: 1px solid black;
+    min-width: 10vw;
+}
+
+button:hover {
+    background-color: teal;
+}
+
+input[type="text"] {
+    padding: 10px;
+    min-width: 50vw;
+}
+
+input[type="text"]:hover {
+    border: 2px solid black;
+}
+
+label {
+    font-weight: bold;
+}
+
+.container {
+    text-align: center;
+    margin-bottom: 200px;
+}

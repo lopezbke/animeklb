@@ -15,6 +15,9 @@ function AnimeRow(param) {
     };
 
     const getStreamerProvider = (url) => {
+        if(!url) {
+            return "";
+        }
         if (url.search("crunchyroll") >= 0) {
             return "Crunchyroll";
         }
@@ -30,6 +33,12 @@ function AnimeRow(param) {
         if (url.search("animelab.com") >= 0) {
             return "AnimeLab";
         }
+        if (url.search("funimation.com") >= 0) {
+            return "Funimation";
+        }
+        if (url.search("tubitv.com") >= 0) {
+            return "TubiTV";
+        }
         return url;
     };
     useEffect(() => {
@@ -37,7 +46,7 @@ function AnimeRow(param) {
             .then((response) => response.json())
             .then((data) => setAnimeLinks(jsonToArray(data)))
             .catch(error => { console.log(error) });
-    }, []);
+    }, [anime]);
 
     return (
         <>

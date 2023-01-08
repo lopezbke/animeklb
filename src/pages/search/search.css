@@ -17,7 +17,7 @@ button:hover {
     background-color: teal;
 }
 
-input[type="text"] {
+.searchBox {
     padding: 10px;
     min-width: 50vw;
 }

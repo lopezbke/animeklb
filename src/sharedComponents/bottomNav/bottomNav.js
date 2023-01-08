@@ -14,7 +14,9 @@ function BottomNav() {
                 <Link to={"/Categories"} className="grid-item" >
                     <FontAwesomeIcon icon={faList}></FontAwesomeIcon> Categories
                 </Link>
-                <div className="grid-item"><FontAwesomeIcon icon={faGlasses}></FontAwesomeIcon> My List</div>
+                <Link to={"/view-user-anime-list"} className="grid-item">
+                    <FontAwesomeIcon icon={faGlasses}></FontAwesomeIcon> My List
+                </Link>
             </div>
         </>
     );

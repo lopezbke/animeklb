@@ -32,7 +32,7 @@ function Search() {
         <br></br>
         <label>Search Anime: </label>
         <br></br>
-        <input type="text" id="searchInput" placeholder="Search for Anime..." />
+        <input type="text" id="searchInput" className="searchBox" placeholder="Search for Anime..." />
         <br></br>
         <br></br>
         <button type="submit" onClick={() => searchButtonClick()}>Search</button>

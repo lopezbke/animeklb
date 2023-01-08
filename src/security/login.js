@@ -1,5 +1,5 @@
 
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import userIsLoggedIn from "../commonFunctions/userIsLoggedIn";
 import "./login.css";
 function Login({setIsLoggedIn}) {
@@ -67,7 +67,6 @@ function Login({setIsLoggedIn}) {
                 <br></br>
                 <br></br>
                 <button className="loginButton" type="submit">Login with Kitsu</button>
-                <p>{JSON.stringify(token)}</p>
             </form>
         </div>
     </>

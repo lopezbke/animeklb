@@ -23,6 +23,7 @@ function Login({setIsLoggedIn}) {
             localStorage.setItem("credentials",credentials);
         }
         sessionStorage.setItem("credentials",credentials);
+        sessionStorage.setItem("jwt", JSON.stringify(responseToken));
         setIsLoggedIn(true);
         // if (response.status === 200) {
         //     const token = {

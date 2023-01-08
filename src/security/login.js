@@ -2,7 +2,7 @@
 import { useState } from "react";
 import userIsLoggedIn from "../commonFunctions/userIsLoggedIn";
 import "./login.css";
-function Login({setIsLoggedIn}) {
+function Login({ setIsLoggedIn }) {
 
     const [emailParam, setEmailParam] = useState("");
     const [passParam, setPassParam] = useState("");
@@ -14,15 +14,15 @@ function Login({setIsLoggedIn}) {
             accessToken: json.access_token,
             refreshToken: json.refresh_token,
             loggedIn: true,
-            expiresAt:  json.expires_in,
+            expiresAt: json.expires_in,
         };
         setToken(responseToken);
-        sessionStorage.setItem("token",JSON.stringify(token));
-        const credentials = JSON.stringify({UserEmail: email, UserPassword: password});
-        if(document.getElementById("rememberCheckBox").checked) {
-            localStorage.setItem("credentials",credentials);
+        sessionStorage.setItem("token", JSON.stringify(token));
+        const credentials = JSON.stringify({ UserEmail: email, UserPassword: password });
+        if (document.getElementById("rememberCheckBox").checked) {
+            localStorage.setItem("credentials", credentials);
         }
-        sessionStorage.setItem("credentials",credentials);
+        sessionStorage.setItem("credentials", credentials);
         sessionStorage.setItem("jwt", JSON.stringify(responseToken));
         setIsLoggedIn(true);
         // if (response.status === 200) {
@@ -57,11 +57,11 @@ function Login({setIsLoggedIn}) {
             <form onSubmit={loginWithKitsu}>
                 <label>Email:</label>
                 <br></br>
-                <input type="email" id="loginEmail" className="loginInput"/>
+                <input type="email" id="loginEmail" className="loginInput" />
                 <br></br>
                 <label>Password:</label>
                 <br></br>
-                <input type="password" id="loginPassword" className="loginInput"/>
+                <input type="password" id="loginPassword" className="loginInput" />
                 <br></br>
                 <input type="checkbox" id="rememberCheckBox" />
                 <label id="rememberCheckBoxLabel" htmlFor="rememberCheckBox">Remember my credentials.</label>

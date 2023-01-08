@@ -7,12 +7,12 @@ function ViewUserAnimeList() {
 
     const [isLoggedIn, setIsLoggedIn]= useState(() => userIsLoggedIn());
     const [comoponentToBeRender, setComponentToBeRender] = useState(<h1>User List</h1>);
-    const loggedInComponent = <Login setIsLoggedIn={setIsLoggedIn}/>;
+    const login = <Login setIsLoggedIn={setIsLoggedIn}/>;
     useEffect(() => {
         if (userIsLoggedIn()) {
             setComponentToBeRender(<h1>User List</h1>);
         } else {
-            setComponentToBeRender(loggedInComponent);
+            setComponentToBeRender(login);
         }
     },[isLoggedIn]);
 

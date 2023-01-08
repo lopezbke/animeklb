@@ -1,8 +1,8 @@
 
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import userIsLoggedIn from "../commonFunctions/userIsLoggedIn";
 import "./login.css";
-
-function Login() {
+function Login({setIsLoggedIn}) {
 
     const [emailParam, setEmailParam] = useState("");
     const [passParam, setPassParam] = useState("");
@@ -18,7 +18,9 @@ function Login() {
         };
         setToken(responseToken);
         sessionStorage.setItem("token",JSON.stringify(token));
-        alert("Logged in successfully.");
+        const credentials = JSON.stringify({UserEmail: emailParam, UserPassword: passParam});
+        sessionStorage.setItem("credentials",credentials);
+        setIsLoggedIn(true);
         // if (response.status === 200) {
         //     const token = {
         //         accessToken: json.access_token,

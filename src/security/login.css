@@ -5,7 +5,6 @@
     margin: auto;
     margin-top: 25vh;
     padding: 20px;
-    font-size: 1.5rem;
 }
 
 .loginButton {
@@ -14,4 +13,8 @@
 
 .loginInput {
     padding: 10px;
+}
+
+#rememberCheckBoxLabel {
+    font-weight: 100;
 }

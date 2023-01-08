@@ -1,9 +1,11 @@
 function userIsLoggedIn () {
-    const userCredentials = sessionStorage.getItem("credentials");
-    if(userCredentials == null) {
-        return false;
+    if(localStorage.getItem("credentials")) {
+        return true;
     }
-    return true;
+    if(sessionStorage.getItem("credentials")) {
+        return true;
+    }
+    return false;
   };
 
   export default userIsLoggedIn;

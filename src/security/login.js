@@ -8,7 +8,7 @@ function Login({setIsLoggedIn}) {
     const [passParam, setPassParam] = useState("");
     const [token, setToken] = useState(null);
 
-    const makeTokenFromResponse = (json) => {
+    const makeTokenFromResponse = (json, email, password) => {
 
         const responseToken = {
             accessToken: json.access_token,
@@ -18,7 +18,10 @@ function Login({setIsLoggedIn}) {
         };
         setToken(responseToken);
         sessionStorage.setItem("token",JSON.stringify(token));
-        const credentials = JSON.stringify({UserEmail: emailParam, UserPassword: passParam});
+        const credentials = JSON.stringify({UserEmail: email, UserPassword: password});
+        if(document.getElementById("rememberCheckBox").checked) {
+            localStorage.setItem("credentials",credentials);
+        }
         sessionStorage.setItem("credentials",credentials);
         setIsLoggedIn(true);
         // if (response.status === 200) {
@@ -39,12 +42,12 @@ function Login({setIsLoggedIn}) {
         const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: '{"grant_type":"password","username":"kevin.klb@outlook.com","password":"Lk1501278*"}'
+            body: `{"grant_type":"password","username":"${emailParam}","password":"${passParam}"}`
         };
 
         fetch('https://kitsu.io/api/oauth/token', options)
             .then(response => response.json())
-            .then(response => makeTokenFromResponse(response))
+            .then(response => makeTokenFromResponse(response, emailParam, passParam))
             .catch(err => console.error(err));
 
     };
@@ -53,11 +56,14 @@ function Login({setIsLoggedIn}) {
             <form onSubmit={loginWithKitsu}>
                 <label>Email:</label>
                 <br></br>
-                <input type="email" id="loginEmail" className="loginInput"></input>
+                <input type="email" id="loginEmail" className="loginInput"/>
                 <br></br>
                 <label>Password:</label>
                 <br></br>
-                <input type="password" id="loginPassword" className="loginInput"></input>
+                <input type="password" id="loginPassword" className="loginInput"/>
+                <br></br>
+                <input type="checkbox" id="rememberCheckBox" />
+                <label id="rememberCheckBoxLabel" htmlFor="rememberCheckBox">Remember my credentials.</label>
                 <br></br>
                 <br></br>
                 <button className="loginButton" type="submit">Login with Kitsu</button>

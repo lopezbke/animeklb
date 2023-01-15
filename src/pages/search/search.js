@@ -3,11 +3,14 @@ import "./search.css";
 import AnimeRow from "../../sharedComponents/animeRow/animeRow.js";
 import BottomNav from "../../sharedComponents/bottomNav/bottomNav";
 import jsonToArray from "../../commonFunctions/jsonToArray";
+
+
 function Search() {
   let [searchResults, setSearchResults] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   const searchButtonClick = () => {
+    // TODO: Verify if there is a better way to retreive/assign the value that is more appropiate in React.
     const input = document.getElementById("searchInput").value;
     setSearchValue(input);
     if (!input) {
@@ -17,6 +20,7 @@ function Search() {
 
   useEffect(() => {
     if (searchValue) {
+      // TODO: Change to await syntax.
       // TODO: Add error handling.
       fetch(`https://kitsu.io/api/edge/anime?filter[text]=${searchValue}`)
         .then((response) => response.json())

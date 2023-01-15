@@ -6,6 +6,7 @@ function AnimeRow(param) {
 
     const [animeLinks, setAnimeLinks] = useState([]);
 
+    // TODO: Extract into a shared function.
     const urlFix = (url) => {
         if (!url) return;
         if (url.substring(0, 4).toLowerCase() !== "http") {
@@ -13,7 +14,8 @@ function AnimeRow(param) {
         }
         return url;
     };
-
+    
+    // TODO: Extract into a shared function.
     const getStreamerProvider = (url) => {
         if(!url) {
             return "";

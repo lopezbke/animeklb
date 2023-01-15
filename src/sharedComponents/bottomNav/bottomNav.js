@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faList, faGlasses } from "@fortawesome/free-solid-svg-icons";
 import "./bottomNav.css";
-
 import { Link } from "react-router-dom";
+
 
 function BottomNav() {
     return (

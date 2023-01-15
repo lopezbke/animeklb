@@ -2,14 +2,13 @@
 import { useState } from "react";
 import userIsLoggedIn from "../commonFunctions/userIsLoggedIn";
 import "./login.css";
+
+
 function Login({ setIsLoggedIn }) {
 
-    const [emailParam, setEmailParam] = useState("");
-    const [passParam, setPassParam] = useState("");
     const [token, setToken] = useState(null);
 
-    const makeTokenFromResponse = (json, email, password) => {
-
+    const makeTokenFromResponse = async (json, email, password) => {
         const responseToken = {
             accessToken: json.access_token,
             refreshToken: json.refresh_token,
@@ -17,8 +16,14 @@ function Login({ setIsLoggedIn }) {
             expiresAt: json.expires_in,
         };
         setToken(responseToken);
-        sessionStorage.setItem("token", JSON.stringify(token));
-        const credentials = JSON.stringify({ UserEmail: email, UserPassword: password });
+        // TODO: Change to await syntax. 
+        const userInfoResponse = await fetch(`https://kitsu.io/api/edge/users?filter[name]=${email.split('@')[0]}`)
+        .then(response => response.json())
+        .catch(err => console.error(err));
+
+        console.log("User ID: " + userInfoResponse.data[0].id);
+        const credentials = JSON.stringify({ UserEmail: email, UserPassword: password, UserId: userInfoResponse.data[0].id});
+        // TODO: Verify if there is a better way to retreive/assign the value that is more appropiate in React.
         if (document.getElementById("rememberCheckBox").checked) {
             localStorage.setItem("credentials", credentials);
         }
@@ -38,20 +43,21 @@ function Login({ setIsLoggedIn }) {
 
     const loginWithKitsu = (event) => {
         event.preventDefault();
-        setEmailParam(document.getElementById("loginEmail").value);
-        setPassParam(document.getElementById("loginPassword").value);
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
         const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: `{"grant_type":"password","username":"${emailParam}","password":"${passParam}"}`
+            body: `{"grant_type":"password","username":"${email}","password":"${password}"}`
         };
-
+        // TODO: Change to await syntax. 
         fetch('https://kitsu.io/api/oauth/token', options)
             .then(response => response.json())
-            .then(response => makeTokenFromResponse(response, emailParam, passParam))
+            .then(response => makeTokenFromResponse(response, email, password))
             .catch(err => console.error(err));
 
     };
+
     return <>
         <div className="loginContainer">
             <form onSubmit={loginWithKitsu}>
